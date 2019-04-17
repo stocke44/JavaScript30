@@ -62,13 +62,27 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
     }
 
   </style>
 
   <script>
 
+    function clockRotate(){
+      let currentSeconds = new Date().getSeconds();
+      let currentMinutes = new Date().getMinutes();
+      let currentHours = new Date().getHours();      
+      document.querySelector('.second-hand').style.transform = `rotate(${(currentSeconds*6)+90}deg)`;
+      document.querySelector('.min-hand').style.transform = `rotate(${(currentMinutes*6)+90}deg)`;
+      document.querySelector('.hour-hand').style.transform = `rotate(${(currentHours*30)+90}deg)`;
+      // document.querySelector('.second-hand').style.transformOrigin = 'right';
+      // document.querySelector('.min-hand').style.transformOrigin = 'right';
+      // document.querySelector('.hour-hand').style.transformOrigin = 'right'; I added this myself but found out after watching video transform origin in the css is simpler and cleaner
 
+    }
+    setInterval(clockRotate, 1000);
+    clockRotate();
   </script>
 </body>
 </html>
